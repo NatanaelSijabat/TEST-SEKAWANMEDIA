@@ -23,7 +23,8 @@ class DatabaseSeeder extends Seeder
             TypeUserSeeder::class,
             UserSeeder::class,
             JenisKendaraanSeeder::class,
-            TypeKendaraanSeeder::class
+            TypeKendaraanSeeder::class,
+            KendaraanSeeder::class
         ]);
     }
 }
