@@ -11,8 +11,8 @@ class UserController extends BaseController
 {
     public function index()
     {
-        $users = User::with('roles:id,name')->latest()->get();
+        $data = User::with('role:id,name', 'type:id,name', 'atasan:id,name')->latest()->get();
 
-        return $this->sendResponse(UserResource::collection($users), 'Data User');
+        return $this->sendResponse(UserResource::collection($data), 'Data User');
     }
 }

@@ -3,11 +3,10 @@
 namespace Database\Seeders;
 
 use Carbon\Carbon;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class RoleSeeder extends Seeder
+class RoleUserSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -27,7 +26,7 @@ class RoleSeeder extends Seeder
             ]
         ];
 
-        DB::table('roles')->delete();
-        DB::table('roles')->insert($role);
+        DB::table('role_users')->delete();
+        DB::table('role_users')->insert($role);
     }
 }

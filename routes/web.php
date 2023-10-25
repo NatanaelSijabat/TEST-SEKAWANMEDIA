@@ -23,12 +23,19 @@ Route::get('/', function () {
     //     'laravelVersion' => Application::VERSION,
     //     'phpVersion' => PHP_VERSION,
     // ]);
-    return Inertia::render('Auth/Login');
+    return Inertia::render('Auth/Login', [
+        'canRefister' => Route::has('register')
+    ]);
 });
 
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return Inertia::render('Dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::inertia('/dashboard', 'Dashboard')->name('dashboard');
+    Route::inertia('/users', 'Users/Users')->name('users');
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

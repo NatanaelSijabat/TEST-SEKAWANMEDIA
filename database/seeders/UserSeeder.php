@@ -19,16 +19,60 @@ class UserSeeder extends Seeder
         $users = [
             [
                 'name' => 'Admin',
-                'roles_id' => 1,
+                'role_users_id' => 1,
+                'type_users_id' => 4,
+                'users_id' => null,
                 'email' => 'admin@mail.com',
                 'password' => Hash::make("1234567890"),
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'name' => 'User',
-                'roles_id' => 2,
-                'email' => 'user@mail.com',
+                'name' => 'Atasan 1',
+                'role_users_id' => 2,
+                'type_users_id' => 2,
+                'users_id' => null,
+                'email' => 'Atasan1@mail.com',
+                'password' => Hash::make("1234567890"),
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
+            [
+                'name' => 'Atasan 2',
+                'role_users_id' => 2,
+                'type_users_id' => 2,
+                'users_id' => null,
+                'email' => 'Atasan2@mail.com',
+                'password' => Hash::make("1234567890"),
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
+            [
+                'name' => 'Karyawan 1',
+                'role_users_id' => 2,
+                'type_users_id' => 1,
+                'users_id' => 2,
+                'email' => 'karyawan1@mail.com',
+                'password' => Hash::make("1234567890"),
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
+            [
+                'name' => 'Karyawan 2',
+                'role_users_id' => 2,
+                'type_users_id' => 1,
+                'users_id' => 3,
+                'email' => 'karyawan2@mail.com',
+                'password' => Hash::make("1234567890"),
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
+            [
+                'name' => 'Pengelola Kendaraan',
+                'role_users_id' => 2,
+                'type_users_id' => 3,
+                'users_id' => null,
+                'email' => 'pengelola@mail.com',
                 'password' => Hash::make("1234567890"),
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()

@@ -5,6 +5,7 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -21,7 +22,9 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
-        'roles_id',
+        'role_users_id',
+        'type_users_id',
+        'users_id',
         'email',
         'password',
     ];
@@ -44,8 +47,19 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function roles(): BelongsTo
+    public function atasan(): HasMany
     {
-        return $this->belongsTo(Role::class);
+        return $this->hasMany(User::class, 'id', 'users_id');
+    }
+
+
+    public function role(): HasOne
+    {
+        return $this->hasOne(RoleUser::class, 'id', 'role_users_id');
+    }
+
+    public function type(): HasOne
+    {
+        return $this->hasOne(TypeUser::class, 'id', 'type_users_id');
     }
 }
