@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\RedirectAuthenticatedUsersController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -28,14 +29,18 @@ Route::get('/', function () {
     ]);
 });
 
-// Route::get('/dashboard', function () {
-//     return Inertia::render('Dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/redirectAuthenticatedUsers', [RedirectAuthenticatedUsersController::class, 'home']);
 
-Route::middleware(['auth', 'verified'])->group(function () {
-    Route::inertia('/dashboard', 'Dashboard')->name('dashboard');
-    Route::inertia('/users', 'Users/Users')->name('users');
+    Route::group(['middleware' => 'haveRole:Admin'], function () {
+        Route::inertia('/dashboard', 'Dashboard')->name('Dashboard');
+    });
+
+    Route::group(['middleware' => 'haveRole:User'], function () {
+        Route::inertia('/UserDashboard', 'UserDashboard')->name('UserDashboard');
+    });
 });
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

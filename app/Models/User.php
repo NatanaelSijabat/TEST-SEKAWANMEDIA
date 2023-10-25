@@ -47,15 +47,16 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
+
     public function atasan(): HasMany
     {
         return $this->hasMany(User::class, 'id', 'users_id');
     }
 
 
-    public function role(): HasOne
+    public function role(): HasMany
     {
-        return $this->hasOne(RoleUser::class, 'id', 'role_users_id');
+        return $this->hasMany(RoleUser::class, 'id', 'role_users_id');
     }
 
     public function type(): HasOne

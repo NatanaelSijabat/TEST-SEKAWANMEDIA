@@ -13,6 +13,7 @@ class UserController extends BaseController
     {
         $data = User::with('role:id,name', 'type:id,name', 'atasan:id,name')->latest()->get();
 
-        return $this->sendResponse(UserResource::collection($data), 'Data User');
+        // return $this->sendResponse(UserResource::collection($data), 'Data User');
+        return $data;
     }
 }

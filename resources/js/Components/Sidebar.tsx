@@ -5,6 +5,7 @@ import {
     AiOutlineHome,
     AiOutlineUser,
 } from "react-icons/ai";
+import { BiLogOutCircle } from "react-icons/bi";
 import { Layout, Menu, Button, theme, MenuProps } from "antd";
 import { Link } from "@inertiajs/react";
 
@@ -40,6 +41,18 @@ const items: MenuItem[] = [
         </Link>,
         "2",
         <AiOutlineUser />
+    ),
+    getItem(
+        <Link
+            href={route("logout")}
+            className="capitalize"
+            as="button"
+            method="post"
+        >
+            Logout
+        </Link>,
+        "3",
+        <BiLogOutCircle />
     ),
 ];
 
