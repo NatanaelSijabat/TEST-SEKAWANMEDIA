@@ -27,7 +27,8 @@ class DatabaseSeeder extends Seeder
             KendaraanSeeder::class,
             EmployeeSeeder::class,
             UserSeeder::class,
-            StatusSeeeder::class
+            StatusSeeeder::class,
+            OrdersSeeder::class
         ]);
     }
 }
