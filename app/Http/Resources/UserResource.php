@@ -16,17 +16,15 @@ class UserResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'name' => $this->name,
-            'roles' => $this->role ? [
-                'name' => optional($this->role)->name,
-            ] : null,
-            'type' => $this->type ? [
-                'name' => optional($this->type)->name,
-            ] : null,
-            'atasan' => $this->atasan->map(function ($atasan) {
-                return ['name' => $atasan->name];
+            'email' => $this->email,
+            'role' => $this->role->map(function ($role) {
+                return [
+                    'name' => $role->name,
+                ];
             }),
-
+            'employee' => $this->employee ? [
+                'fullname' => optional($this->employee)->firstname . ' ' . optional($this->employee)->lastname,
+            ] : null
         ];
     }
 }

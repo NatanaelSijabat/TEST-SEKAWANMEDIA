@@ -6,6 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -21,10 +22,8 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
         'role_users_id',
-        'type_users_id',
-        'users_id',
+        'employees_id',
         'email',
         'password',
     ];
@@ -47,6 +46,11 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
+    public function hasAnyRole($roles)
+    {
+        return $this->role->whereIn('name', $roles)->count() > 0;
+    }
+
 
     public function atasan(): HasMany
     {
@@ -63,4 +67,14 @@ class User extends Authenticatable
     {
         return $this->hasOne(TypeUser::class, 'id', 'type_users_id');
     }
+
+    public function employee(): HasOne
+    {
+        return $this->hasOne(Employee::class, 'id', 'employees_id');
+    }
+
+    // public function locations()
+    // {
+    //     return $this->hasManyThrough(Employee::class, Location::class);
+    // }
 }

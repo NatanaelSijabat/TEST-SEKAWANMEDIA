@@ -21,13 +21,13 @@ class HasRole
             $user = Auth::user();
             $role = RoleUser::find($user->role_users_id);
 
-            // dd($user);
+            // dd($role);
 
-            if ($role && $role->name != $roleName) {
+            if ($role == "Admin" && $role->name != $roleName) {
                 abort(403);
             }
 
-            if ($role && $role->name != $roleName) {
+            if ($role == 'User' && $role->name != $roleName) {
                 abort(403);
             }
         }

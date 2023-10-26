@@ -1,4 +1,9 @@
-import React, { PropsWithChildren, useState } from "react";
+import React, {
+    PropsWithChildren,
+    ReactElement,
+    ReactNode,
+    useState,
+} from "react";
 import {
     AiOutlineMenuUnfold,
     AiOutlineMenuFold,
@@ -8,6 +13,7 @@ import {
 import { BiLogOutCircle } from "react-icons/bi";
 import { Layout, Menu, Button, theme, MenuProps } from "antd";
 import { Link } from "@inertiajs/react";
+import { User } from "@/types";
 
 const { Header, Sider, Content } = Layout;
 
@@ -27,7 +33,7 @@ function getItem(
     } as MenuItem;
 }
 
-const items: MenuItem[] = [
+const itemsAdmin: MenuItem[] = [
     getItem(
         <Link href={"/dashboard"} className="capitalize">
             Dashboard
@@ -56,12 +62,40 @@ const items: MenuItem[] = [
     ),
 ];
 
-const ExampleSidebar = ({ children }: PropsWithChildren) => {
+const itemsUser: MenuItem[] = [
+    getItem(
+        <Link href={"/dashboard"} className="capitalize">
+            Dashboard
+        </Link>,
+        "1",
+        <AiOutlineHome />
+    ),
+    getItem(
+        <Link
+            href={route("logout")}
+            className="capitalize"
+            as="button"
+            method="post"
+        >
+            Logout
+        </Link>,
+        "2",
+        <BiLogOutCircle />
+    ),
+];
+
+interface Props {
+    children: any;
+    user: User;
+}
+
+const ExampleSidebar: React.FC<Props> = ({ children, user }) => {
     const [collapsed, setCollapsed] = useState(false);
     const {
         token: { colorBgContainer },
     } = theme.useToken();
 
+    console.log(user.role_users_id, "p");
     return (
         <Layout hasSider>
             <Sider
@@ -77,7 +111,11 @@ const ExampleSidebar = ({ children }: PropsWithChildren) => {
                         background: "rgba(255, 255, 255, 0.2)",
                     }}
                 />
-                <Menu theme="dark" mode="inline" items={items} />
+                {user.role_users_id === 1 ? (
+                    <Menu theme="dark" mode="inline" items={itemsAdmin} />
+                ) : (
+                    <Menu theme="dark" mode="inline" items={itemsUser} />
+                )}
             </Sider>
             <Layout>
                 <Header style={{ padding: 0, background: colorBgContainer }}>
@@ -106,7 +144,7 @@ const ExampleSidebar = ({ children }: PropsWithChildren) => {
                         background: colorBgContainer,
                     }}
                 >
-                    {children}
+                    {children as ReactNode}
                 </Content>
             </Layout>
         </Layout>

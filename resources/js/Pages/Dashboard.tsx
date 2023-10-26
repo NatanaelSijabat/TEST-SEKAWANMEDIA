@@ -15,7 +15,7 @@ export default function Dashboard({ auth }: PageProps) {
                     </div>
                 </div> */}
             {/* </div> */}
-            <p>Welcome Back : {auth.user.name}</p>
+            <p>Welcome Back : {auth.user.email}</p>
         </AuthenticatedLayout>
     );
 }

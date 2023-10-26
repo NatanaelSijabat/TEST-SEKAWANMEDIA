@@ -9,7 +9,7 @@ export default function Authenticated({
 }: PropsWithChildren<{ user: User; header?: ReactNode }>) {
     return (
         <>
-            <ExampleSidebar>
+            <ExampleSidebar user={user}>
                 <div className="min-h-screen">
                     <main>{children}</main>
                 </div>

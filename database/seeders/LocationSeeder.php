@@ -8,38 +8,46 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 
 
-
-class TypeUserSeeder extends Seeder
+class LocationSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        $typeuser = [
+        $data = [
             [
-                'name' => 'Karyawan',
+                "name" => "Location 1",
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'name' => 'Supervisor',
+                "name" => "Location 2",
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'name' => 'Manager',
+                "name" => "Location 3",
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'name' => 'Pengelola Kendaraan',
+                "name" => "Location 4",
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
+            [
+                "name" => "Location 5",
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
+            [
+                "name" => "Location 6",
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ]
         ];
-
-        DB::table('type_users')->delete();
-        DB::table('type_users')->insert($typeuser);
+        DB::table('locations')->delete();
+        DB::table('locations')->insert($data);
     }
 }

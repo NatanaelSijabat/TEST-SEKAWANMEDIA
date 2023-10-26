@@ -30,14 +30,13 @@ Route::get('/', function () {
 });
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('/redirectAuthenticatedUsers', [RedirectAuthenticatedUsersController::class, 'home']);
-
     Route::group(['middleware' => 'haveRole:Admin'], function () {
         Route::inertia('/dashboard', 'Dashboard')->name('Dashboard');
+        Route::inertia('/users', 'Users/Users')->name('Users/Users');
     });
 
     Route::group(['middleware' => 'haveRole:User'], function () {
-        Route::inertia('/UserDashboard', 'UserDashboard')->name('UserDashboard');
+        Route::inertia('/dashboard', 'Dashboard')->name('Dashboard');
     });
 });
 
