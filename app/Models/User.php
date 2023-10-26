@@ -46,11 +46,6 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function hasAnyRole($roles)
-    {
-        return $this->role->whereIn('name', $roles)->count() > 0;
-    }
-
 
     public function atasan(): HasMany
     {
@@ -73,8 +68,8 @@ class User extends Authenticatable
         return $this->hasOne(Employee::class, 'id', 'employees_id');
     }
 
-    // public function locations()
-    // {
-    //     return $this->hasManyThrough(Employee::class, Location::class);
-    // }
+    public function locations()
+    {
+        return $this->hasManyThrough(Employee::class, Location::class);
+    }
 }

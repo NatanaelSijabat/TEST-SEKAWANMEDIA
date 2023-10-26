@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\EmployeeController;
 use App\Http\Controllers\Api\KendaraanController;
+use App\Http\Controllers\Api\OrderController;
 use App\Http\Controllers\Api\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -24,3 +25,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::apiResource('/users', UserController::class);
 Route::apiResource('/employees', EmployeeController::class);
 Route::apiResource('/kendaraans', KendaraanController::class);
+Route::apiResource('/orders', OrderController::class);

@@ -4,15 +4,22 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Resources\EmployeeResource;
 use App\Models\Employee;
-use Illuminate\Database\Query\JoinClause;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
 
 class EmployeeController extends BaseController
 {
-    public function index()
+    public function index(Request $request)
     {
-        $data = Employee::with('location:id,name', 'jabatan:id,name', 'atasan')->latest()->get();
+        $searchTerm = $request->input('jabatan');
 
-        return $this->sendResponse(EmployeeResource::collection($data), 'Data User');
+        $query = Employee::with('location:id,name', 'jabatan:id,name', 'atasan')
+            ->whereHas('jabatan', function ($query) use ($searchTerm) {
+                $query->where('name', 'like', '%' . $searchTerm . '%');
+            })
+            ->latest()
+            ->get();
+
+
+        return $this->sendResponse(EmployeeResource::collection($query), 'Data User');
     }
 }
