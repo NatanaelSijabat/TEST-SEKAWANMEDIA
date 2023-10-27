@@ -50,3 +50,33 @@ copy file .env.example menjadi .env
 ```bash
 cp .env.example .env
 ```
+
+### Generate Key App Laravel
+
+```bash
+php artisan key:generate
+```
+
+### jalankan migrasi dan seed
+
+```bash
+php artisan migrate --seed
+```
+
+lalu ketik `YES` untuk generate database
+
+### Jalankan Program
+
+buka 2 terminal untuk menjalankan applikasi ini
+
+Terminal 1 untuk Laravel :
+
+```bash
+php artisan serve
+```
+
+Terminal 2 untuk React JS :
+
+```bash
+npm run dev
+```
