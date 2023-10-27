@@ -24,4 +24,9 @@ class Kendaraan extends Model
     {
         return $this->hasOne(TypeKendaraan::class, 'id', 'type_kendaraans_id');
     }
+
+    public function location(): HasOne
+    {
+        return $this->hasOne(Locations::class, 'id', 'locations_id');
+    }
 }

@@ -17,12 +17,9 @@ class KendaraanResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'jenis' => $this->jenis ? [
-                'name' => optional($this->jenis)->name
-            ] : null,
-            'type' => $this->type ? [
-                'name' => optional($this->type)->name
-            ] : null
+            'jenis' => optional($this->jenis)->name,
+            'kepemilikan' => optional($this->type)->name,
+            'lokasi' => optional($this->location)->name
         ];
     }
 }

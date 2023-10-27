@@ -1,9 +1,4 @@
-import React, {
-    PropsWithChildren,
-    ReactElement,
-    ReactNode,
-    useState,
-} from "react";
+import React, { ReactNode, useState } from "react";
 import {
     AiOutlineMenuUnfold,
     AiOutlineMenuFold,
@@ -11,6 +6,8 @@ import {
     AiOutlineUser,
 } from "react-icons/ai";
 import { BiLogOutCircle } from "react-icons/bi";
+import { FiShoppingCart } from "react-icons/fi";
+import { BsFillClipboard2CheckFill } from "react-icons/bs";
 import { Layout, Menu, Button, theme, MenuProps } from "antd";
 import { Link } from "@inertiajs/react";
 import { User } from "@/types";
@@ -49,6 +46,13 @@ const itemsAdmin: MenuItem[] = [
         <AiOutlineUser />
     ),
     getItem(
+        <Link href={"/orders"} className="capitalize">
+            Orders
+        </Link>,
+        "3",
+        <FiShoppingCart />
+    ),
+    getItem(
         <Link
             href={route("logout")}
             className="capitalize"
@@ -57,7 +61,7 @@ const itemsAdmin: MenuItem[] = [
         >
             Logout
         </Link>,
-        "3",
+        "4",
         <BiLogOutCircle />
     ),
 ];
@@ -71,6 +75,13 @@ const itemsUser: MenuItem[] = [
         <AiOutlineHome />
     ),
     getItem(
+        <Link href={"/apply"} className="capitalize">
+            Apply Orders
+        </Link>,
+        "2",
+        <BsFillClipboard2CheckFill />
+    ),
+    getItem(
         <Link
             href={route("logout")}
             className="capitalize"
@@ -79,7 +90,7 @@ const itemsUser: MenuItem[] = [
         >
             Logout
         </Link>,
-        "2",
+        "3",
         <BiLogOutCircle />
     ),
 ];
@@ -95,7 +106,6 @@ const ExampleSidebar: React.FC<Props> = ({ children, user }) => {
         token: { colorBgContainer },
     } = theme.useToken();
 
-    console.log(user.role_users_id, "p");
     return (
         <Layout hasSider>
             <Sider

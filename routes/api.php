@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\AllController;
 use App\Http\Controllers\Api\EmployeeController;
 use App\Http\Controllers\Api\KendaraanController;
 use App\Http\Controllers\Api\OrderController;
@@ -26,3 +27,6 @@ Route::apiResource('/users', UserController::class);
 Route::apiResource('/employees', EmployeeController::class);
 Route::apiResource('/kendaraans', KendaraanController::class);
 Route::apiResource('/orders', OrderController::class);
+
+
+Route::apiResource('/all', AllController::class);

@@ -23,7 +23,7 @@ class UserSeeder extends Seeder
             [
                 'role_users_id' => 1,
                 'employees_id' => 19,
-                'email' => $faker->email,
+                'email' => 'admin@mail.com',
                 'password' => Hash::make("1234567890"),
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
@@ -31,7 +31,7 @@ class UserSeeder extends Seeder
             [
                 'role_users_id' => 2,
                 'employees_id' => 1,
-                'email' => $faker->email,
+                'email' => "manager@mail.com",
                 'password' => Hash::make("1234567890"),
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
@@ -79,7 +79,7 @@ class UserSeeder extends Seeder
             [
                 'role_users_id' => 2,
                 'employees_id' => 7,
-                'email' => $faker->email,
+                'email' => "supervisor@mail.com",
                 'password' => Hash::make("1234567890"),
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()

@@ -13,6 +13,7 @@ class UserController extends BaseController
     {
         $data = User::with('employee:id,firstname,lastname,type_users_id,locations_id,employees_id', 'role:id,name')->latest()->get();
 
-        return $data;
+        // return $data;
+        return $this->sendResponse(UserResource::collection($data), 'Data Users');
     }
 }

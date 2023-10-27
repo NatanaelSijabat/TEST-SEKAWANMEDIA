@@ -20,7 +20,7 @@ class Employee extends Model
 
     public function location(): HasOne
     {
-        return $this->hasOne(Location::class, 'id', 'locations_id');
+        return $this->hasOne(Locations::class, 'id', 'locations_id');
     }
 
     public function jabatan(): HasOne

@@ -4,8 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\HasManyThrough;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class JenisKendaraan extends Model
 {
@@ -13,8 +12,8 @@ class JenisKendaraan extends Model
 
     protected $fillable = ['name', 'id'];
 
-    public function kendaraan(): HasMany
+    public function kendaraan(): BelongsTo
     {
-        return $this->hasMany(Kendaraan::class);
+        return $this->belongsTo(Kendaraan::class);
     }
 }

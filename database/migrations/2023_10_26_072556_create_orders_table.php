@@ -18,8 +18,8 @@ return new class extends Migration
             $table->foreignId('karyawan_id')->references('id')->on('employees')->onDelete('cascade');
             $table->foreignId('supervisor_id')->references('id')->on('employees')->onDelete('cascade');
             $table->foreignId('manager_id')->references('id')->on('employees')->onDelete('cascade');
-            $table->foreignId('status_manager')->references('id')->on('statuses')->onDelete('cascade');
-            $table->foreignId('status_supervisor')->references('id')->on('statuses')->onDelete('cascade');
+            $table->foreignId('status_manager')->default(1)->references('id')->on('statuses')->onDelete('cascade');
+            $table->foreignId('status_supervisor')->default(1)->references('id')->on('statuses')->onDelete('cascade');
             $table->date('tanggal_pemakaian');
             $table->date('tanggal_pengembalian');
             $table->timestamps();

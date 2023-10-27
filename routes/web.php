@@ -33,10 +33,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(['middleware' => 'haveRole:Admin'], function () {
         Route::inertia('/dashboard', 'Dashboard')->name('Dashboard');
         Route::inertia('/users', 'Users/Users')->name('Users/Users');
+        Route::inertia('/orders', 'Orders/Orders')->name('Orders/Orders');
     });
 
     Route::group(['middleware' => 'haveRole:User'], function () {
         Route::inertia('/dashboard', 'Dashboard')->name('Dashboard');
+        Route::inertia('/apply', 'Apply/Apply')->name('Apply/Apply');
     });
 });
 
